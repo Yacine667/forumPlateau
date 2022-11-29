@@ -29,12 +29,11 @@
         public function listTopics(){     
             
             $topicManager = new TopicManager();
-            $topics = $topicManager->findTopicsByCategorie($id);
 
             return [
-                "view" => VIEW_DIR."forum/listTopics.php",
+                "view" => VIEW_DIR . "forum/listTopics.php",
                 "data" => [
-                    "topics" => $topics
+                    "topics" => $topicManager->findAll(["categorie_id", "DESC"])
                 ]
             ];
 
