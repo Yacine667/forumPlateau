@@ -3,7 +3,6 @@
     
     use App\Manager;
     use App\DAO;
-    use Model\Managers\TopicManager;
 
     class TopicManager extends Manager{
 
@@ -15,5 +14,16 @@
             parent::connect();
         }
 
+        public function findTopicsByCategorie($id) {
+
+            $sql = "SELECT *
+                    FROM $this->tableName
+                    WHERE categorie_id = :id";
+
+            return $this->getMultipleResults(
+                DAO::select($sql,['id' => $id]),
+                $this->className
+            );
+        }
 
     }

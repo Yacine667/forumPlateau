@@ -4,10 +4,10 @@
     use App\Manager;
     use App\DAO;
 
-    class UserManager extends Manager{
+    class CategorieManager extends Manager{
 
-        protected $className = "Model\Entities\User";
-        protected $tableName = "user";
+        protected $className = "Model\Entities\Categorie";
+        protected $tableName = "categorie";
 
 
         public function __construct(){
