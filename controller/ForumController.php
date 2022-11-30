@@ -57,7 +57,7 @@
             $topicManager = new TopicManager();
 
             return [
-                "view" => VIEW_DIR . "forum/listTopicByCat.php",
+                "view" => VIEW_DIR . "forum/listTopics.php",
                 "data" => [
                     "topics" => $topicManager->findTopicsByCategorie($id)
                 ]
