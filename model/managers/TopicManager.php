@@ -16,7 +16,7 @@
 
         public function findTopicsByCategorie($id) {
 
-            $sql = "SELECT *
+            $sql = "SELECT title
                     FROM $this->tableName
                     WHERE categorie_id = :id";
 

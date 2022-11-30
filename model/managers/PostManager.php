@@ -17,7 +17,7 @@
         public function findPostsByTopic($id) {
 
             $sql = "SELECT *
-                    FROM '.$this->tableName.'
+                    FROM $this->tableName
                     WHERE topic_id = :id";
 
             return $this->getMultipleResults(

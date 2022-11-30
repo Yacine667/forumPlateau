@@ -10,7 +10,7 @@ $topics = $result["data"]['topics'];
 foreach($topics as $topic){
 
     ?>
-    <p><a href="index.php?ctrl=forum&action=listPosts?id=<?= $topic->getId() ?>"><?=$topic->getTitle()?></a></p>
+    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?= $topic->getId() ?>"><?=$topic->getTitle()?></a></p>
     <?php
 }
 

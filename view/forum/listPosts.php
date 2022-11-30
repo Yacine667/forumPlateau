@@ -1,6 +1,6 @@
 <?php
 
-$messages = $result["data"]['posts'];
+$posts = $result["data"]['posts'];
     
 ?>
 
@@ -10,8 +10,6 @@ $messages = $result["data"]['posts'];
 foreach($posts as $post){
 
     ?>
-    <p><?=$post->getTopic()?></p>
-    <p><?=$post->getUser()?></p>
     <p><?=$post->getMessage()?></p>
     <p><?=$post->getDatePost()?></p>
     <?php

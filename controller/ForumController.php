@@ -39,9 +39,16 @@
 
         }
 
-        public function listPosts(){
+        public function listPosts($id){
 
             $postManager = new PostManager();
+
+            return [
+                "view" => VIEW_DIR . "forum/listPosts.php",
+                "data" => [
+                    "posts" => $postManager->findPostsByTopic($id)
+                ]
+            ];
 
         }
         
