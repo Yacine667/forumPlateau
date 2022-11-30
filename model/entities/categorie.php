@@ -6,7 +6,8 @@
     final class Categorie extends Entity{
 
         private $id;
-        private $title;
+        private $nomCategorie;
+        private $topic;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -48,6 +49,23 @@
         public function setNomCategorie($nomCategorie)
         {
                 $this->nomCategorie = $nomCategorie;
+
+                return $this;
+        }
+
+        public function getTopic()
+        {
+                return $this->topic;
+        }
+
+        /**
+         * Set the value of topic
+         *
+         * @return  self
+         */ 
+        public function setTopic($topic)
+        {
+                $this->topic = $topic;
 
                 return $this;
         }
