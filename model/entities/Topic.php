@@ -8,7 +8,7 @@
         private $id;
         private $title;
         private $user;
-        private $dateCreation;
+        private $creationDate;
         private $closed;
 
         public function __construct($data){         
@@ -75,13 +75,13 @@
                 return $this;
         }
 
-        public function getDateCreation(){
-            $formattedDate = $this->dateCreation->format("d/m/Y, H:i:s");
+        public function getcreationDate(){
+            $formattedDate = $this->creationDate->format("d/m/Y, H:i:s");
             return $formattedDate;
         }
 
-        public function setDateCreation($date){
-            $this->dateCreation = new \DateTime($date);
+        public function setcreationDate($date){
+            $this->creationDate = new \DateTime($date);
             return $this;
         }
 
