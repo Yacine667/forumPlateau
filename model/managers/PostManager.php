@@ -16,6 +16,7 @@
 
         public function findPostsByTopic($id) {
 
+            parent::connect();
             $sql = "SELECT *
                     FROM $this->tableName
                     WHERE topic_id = :id
@@ -26,5 +27,16 @@
                 DAO::select($sql,['id' => $id]),
                 $this->className
             );
+        }
+
+        public function addPost($id) {
+            $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $userId = 1;
+
+            if($message && $id && $userId){
+                $newPost=["message"=>$message, "topic_id"=>$id, "user_id"=>$userId];
+                return $this->add($newPost);
+            }
+  
         }
     }

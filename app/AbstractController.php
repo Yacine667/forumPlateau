@@ -8,12 +8,12 @@
         public function redirectTo($ctrl = null, $action = null, $id = null){
 
             if($ctrl != "home"){
-                $url = $ctrl ? "/".$ctrl : "";
-                $url.= $action ? "/".$action : "";
-                $url.= $id ? "/".$id : "";
-                $url.= ".html";
+                $url = $ctrl ? "?ctrl=".$ctrl : "";
+                $url.= $action ? "&action=".$action : "";
+                $url.= $id ? "&id=".$id : "";
+                //$url.= ".html";
             }
-            else $url = "/";
+            else $url = "/forumplateau";
             header("Location: $url");
             die();
 

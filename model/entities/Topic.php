@@ -10,6 +10,7 @@
         private $user;
         private $creationDate;
         private $closed;
+        private $nomCategorie;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -102,6 +103,23 @@
         {
                 $this->closed = $closed;
 
+                return $this;
+        }
+
+        // GETTER CATEGORY
+        public function getnomCategorie()
+        {
+                return $this->categorie;
+        }
+        
+// SETTER CATEGORY
+        /**
+         * @return  self
+         */ 
+        public function setnomCategory($nomCategorie)
+        {
+                $this->category = $nomCategorie;
+        
                 return $this;
         }
     }

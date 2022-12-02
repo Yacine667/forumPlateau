@@ -1,6 +1,7 @@
 <?php
 
 $posts = $result["data"]['posts'];
+
     
 ?>
 
@@ -24,13 +25,13 @@ foreach($posts as $post){
 
 <h1>Nouveau message</h1>
 
-<form action="" method="POST">
+<form action="index.php?ctrl=forum&action=addPost&id=<?=$id?>" method="POST">
 
 
 <label for="message">Message</label>
-<textarea name="message" id="messageInput" required></textarea>
+<textarea name="message" required></textarea>
 
-<button type="submit" >Répondre</button>
+<input type="submit" value="Poster">
 
 
 

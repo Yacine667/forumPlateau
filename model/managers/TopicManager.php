@@ -16,6 +16,7 @@
 
         public function findTopicsByCategorie($id) {
 
+            parent::connect();
             $sql = "SELECT *
                     FROM $this->tableName
                     WHERE categorie_id = :id";
@@ -25,5 +26,7 @@
                 $this->className
             );
         }
+        
+        
 
     }

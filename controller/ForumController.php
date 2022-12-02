@@ -65,7 +65,45 @@
 
         }
         
-        
+
+     public function addTopic($id) {
+
+        $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $userId = 1;
+        $topicManager = new TopicManager();
+        $postManager = new PostManager();
+
+        if($title && $message ) {
+
+            $newTopic=["title"=>$title,"categorie_id"=>$id, "user_id"=>$userId];
+            $topicId = $topicManager->add($newTopic);
+            $newPost=["message"=>$message,"topic_id"=>$topicId ,"user_id"=>$userId];
+            $postManager->add($newPost);
+
+            $this->redirectTo("forum","listTopics");
+        }   
+    }
+
+    public function addPost($id) {
+
+        $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $userId=  1;
+        $postManager = new PostManager();
+
+
+        if($message) {
+
+            $newPost=["message"=>$message,"topic_id"=>$id ,"user_id"=>$userId];
+            $postManager->add($newPost);
+
+            $this->redirectTo("forum","listPosts",$id);
+        }
+    }
+
+
+
         
         
 
