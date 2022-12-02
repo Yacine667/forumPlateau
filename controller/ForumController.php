@@ -57,7 +57,7 @@
             $topicManager = new TopicManager();
 
             return [
-                "view" => VIEW_DIR . "forum/listTopics.php",
+                "view" => VIEW_DIR . "forum/listTopicByCat.php",
                 "data" => [
                     "topics" => $topicManager->findTopicsByCategorie($id)
                 ]
@@ -82,7 +82,7 @@
             $newPost=["message"=>$message,"topic_id"=>$topicId ,"user_id"=>$userId];
             $postManager->add($newPost);
 
-            $this->redirectTo("forum","listTopics");
+            $this->redirectTo("forum","listTopicByCat",$id);
         }   
     }
 
