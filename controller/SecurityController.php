@@ -1,4 +1,6 @@
 <?php
+
+namespace Controller;
  
     use App\Session;
     use App\AbstractController;
@@ -16,40 +18,41 @@
 
         }
 
-public function addUser() {
+        public function addUser() {
 
-    if (isset($_POST['register'])) {
-        var_dump($_POST);die;
-        $pseudo = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $mail = filter_input(INPUT_POST, "mail", FILTER_SANITIZE_EMAIL);
+            if (isset($_POST['register'])) {
 
-        $mdp = $_POST['mdp'];
-        $mdp2 =  $_POST['mdp2'];
+                $pseudo = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $mail = filter_input(INPUT_POST, "mail", FILTER_SANITIZE_EMAIL);
+                $mdp = $_POST['mdp'];
+                $mdp2 =  $_POST['mdp2'];
 
-        if($pseudo && $mail && $mdp && $mdp2 && ($mdp == $mdp2)) {
+                if($pseudo && $mail && $mdp && $mdp2 && ($mdp == $mdp2)) {
 
-            $userManager = new UserManager();
+                    $userManager = new UserManager();
 
-            $passwordHash = password_hash($mdp, PASSWORD_DEFAULT);
+                    $checkPseudo = $userManager->checkPseudo($pseudo);
+                    $checkMail = $userManager->checkMail($mail);
 
+                    if (!$checkPseudo && !$checkMail) {
 
-                $newUser=[
-                    "pseudo"=>$pseudo,
-                    "mail"=>$mail,
-                    "mdp"=>$passwordHash
-                ];
+                        $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
 
-                $userManager->add($newUser); 
+                        $newUser=[
+                            "pseudo"=>$pseudo,
+                            "mail"=>$mail,
+                            "mdp"=>$mdpHash
+                        ];
 
-                $this->redirectTo('home');  
+                        $userManager->add($newUser); 
+                        Session::addFlash('success', 'Vous êtes bien enregistré !');
+                        $this->redirectTo('home');  
 
+                    } else Session::addFlash('error', 'Pseudo ou mail déjà enregistré');
 
-            } 
-    
-             return ["view" => VIEW_DIR. "security/register.php"];
+                } else Session::addFlash('error', 'Les mots de passe ne sont pas identiques');
+
+            } return ["view" => VIEW_DIR. "security/register.php"];
         }
-
-
-    }
 
 }
