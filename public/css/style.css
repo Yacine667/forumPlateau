@@ -67,7 +67,8 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 200px;
+    justify-content: center;
+    gap: 50px;
     padding-top: 50px;
     padding-bottom: 50px;
     background: linear-gradient(-45deg, #909090, #97979782, #ffffff5b, #ffffff);
@@ -84,6 +85,15 @@ header {
     height: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+#forum  textarea{
+
+
+    width: 400px;
+    height: 200px;
+
+
 }
 
 #forum  label{
@@ -105,7 +115,6 @@ footer {
     margin-top: 100px;
     width:100%;
     height:20px;
-
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
