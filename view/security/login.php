@@ -10,7 +10,7 @@
             <br>
             <label>
                 password : <br>
-                <input type="mdp" name="mdp" required>
+                <input type="password" name="mdp" required>
             </label>
             <br>
             <input type="submit" name="connect" value="Se connecter">

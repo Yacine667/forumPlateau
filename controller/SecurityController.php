@@ -61,7 +61,7 @@ namespace Controller;
             if(isset($_POST['connect'])) {
 //var_dump($_POST);die;
                 $mail = filter_input(INPUT_POST, "mail", FILTER_SANITIZE_EMAIL);
-                $mdp = $_POST["mdp"];
+                $mdp = filter_input(INPUT_POST, "mdp", FILTER_SANITIZE_SPECIAL_CHARS);
 
                 if($mail) {
                     if($mdp) {
@@ -87,5 +87,15 @@ namespace Controller;
             return ["view" => VIEW_DIR . "security/login.php"];
         }
 
+    }
+
+    public function logout() {
+        
+        if (isset($_SESSION['user'])) {
+
+        $_SESSION['user'] = null;
+        Session::addFlash('success', 'Vous êtes bien déconnecté');
+        return ["view" => VIEW_DIR . "home.php"];
+        }
     }
 }
