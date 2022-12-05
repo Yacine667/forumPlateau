@@ -12,11 +12,12 @@ $posts = $result["data"]['posts'];
 foreach($posts as $post){
 
 ?>
-
+<div class="topic">
     <p><?=$post->getMessage()?></p>
 
     <p><?=$post->getDatePost()?></p>
-
+    
+</div>
 <?php
 
 }

@@ -11,8 +11,11 @@ $categories = $result["data"]['categories'];
 foreach($categories as $categorie){
 
 ?>
+<div class="topic">
+
     <p><a href="index.php?ctrl=forum&action=listTopicByCat&id=<?= $categorie->getId() ?>"><?=$categorie->getNomCategorie()?></a></p>
 
+</div>
 <?php
 
 }

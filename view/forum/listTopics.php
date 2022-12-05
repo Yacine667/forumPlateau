@@ -12,11 +12,13 @@ $topics = (!$result["data"]['topics']) ? [] : $result["data"]['topics'];
 foreach($topics as $topic){
 
 ?>
+<div class="topic">
 
     <p><a href="index.php?ctrl=forum&action=listPosts&id=<?= $topic->getId() ?>"><?=$topic->getTitle()?></a></p>
 
     <p><?=$topic->getcreationDate()?></p>
-    
+
+</div>   
 <?php
 
 }
