@@ -63,43 +63,40 @@
                 ]
             ];
 
-        }
-        
+        }        
 
-     public function addTopic($id) {
+        public function addTopic($id) {
 
-        $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $userId = 4;
+            $topicManager = new TopicManager();
+            $postManager = new PostManager();
 
-        $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $userId = 1;
-        $topicManager = new TopicManager();
-        $postManager = new PostManager();
+            if($title && $message ) {
 
-        if($title && $message ) {
+                $newTopic=["title"=>$title,"categorie_id"=>$id, "user_id"=>$userId];
+                $topicId = $topicManager->add($newTopic);
+                $newPost=["message"=>$message,"topic_id"=>$topicId ,"user_id"=>$userId];
+                $postManager->add($newPost);
 
-            $newTopic=["title"=>$title,"categorie_id"=>$id, "user_id"=>$userId];
-            $topicId = $topicManager->add($newTopic);
-            $newPost=["message"=>$message,"topic_id"=>$topicId ,"user_id"=>$userId];
-            $postManager->add($newPost);
-
-            $this->redirectTo("forum","listTopicByCat",$id);
-        }   
+                $this->redirectTo("forum","listTopicByCat",$id);
+            }   
     }
 
-    public function addPost($id) {
+        public function addPost($id) {
 
-        $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $userId=  1;
-        $postManager = new PostManager();
+            $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $userId=  4;
+            $postManager = new PostManager();
 
+            if($message) {
 
-        if($message) {
+                $newPost=["message"=>$message,"topic_id"=>$id ,"user_id"=>$userId];
+                $postManager->add($newPost);
 
-            $newPost=["message"=>$message,"topic_id"=>$id ,"user_id"=>$userId];
-            $postManager->add($newPost);
-
-            $this->redirectTo("forum","listPosts",$id);
-        }
+                $this->redirectTo("forum","listPosts",$id);
+            }
     }
 
 

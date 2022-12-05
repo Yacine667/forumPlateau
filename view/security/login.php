@@ -4,12 +4,12 @@
 
         <form action="\forumplateau/index.php?ctrl=security&action=login" method="post">
             <label>
-                email : <br>
+                Entrez votre E-mail : <br>
                 <input type="text" name="mail" required>
             </label>
             <br>
             <label>
-                password : <br>
+                Entrez votre mot de passe : <br>
                 <input type="password" name="mdp" required>
             </label>
             <br>
