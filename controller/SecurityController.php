@@ -55,4 +55,37 @@ namespace Controller;
             } return ["view" => VIEW_DIR. "security/register.php"];
         }
 
+        public function login() {
+
+
+            if(isset($_POST['connect'])) {
+//var_dump($_POST);die;
+                $mail = filter_input(INPUT_POST, "mail", FILTER_SANITIZE_EMAIL);
+                $mdp = $_POST["mdp"];
+
+                if($mail) {
+                    if($mdp) {
+                        $userManager = new UserManager();
+                        $getMdp = $userManager->getMdpUser($mail);
+                        $getUser = $userManager->getUser($mail);
+
+                        if($getUser) {
+
+                            $checkMdp = password_verify($mdp, $getMdp['mdp']);
+
+                            if($checkMdp){
+                                Session::setUser($getUser);
+                                Session::addFlash('success', 'Bienvenue');
+                                $this->redirectTo('home');
+                            } 
+
+                        } else Session::addFlash('error', 'Aucun compte pour cet E-mail');
+
+                    } else Session::addFlash('error', 'Mot de passe incorrect');
+                
+            }
+            return ["view" => VIEW_DIR . "security/login.php"];
+        }
+
+    }
 }

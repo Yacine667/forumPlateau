@@ -32,6 +32,26 @@
             return(DAO::select($sql,['mail' => $mail]));
         }
 
+        public function getMdpUser($mail){
+            $sql = "
+                SELECT mdp 
+                FROM ".$this->tableName." 
+                WHERE mail = :mail
+            ";
+            return($this->getSingleScalarResult(DAO::select($sql,['mail' => $mail])));
+        }
 
-
+        public function getUser($mail){
+            $sql = "
+                SELECT * 
+                FROM ".$this->tableName." 
+                WHERE mail = :mail
+            ";
+            return($this->getOneOrNullResult(DAO::select($sql,['mail' => $mail],false),$this->className));
+            
+        }
     }
+
+
+
+    
