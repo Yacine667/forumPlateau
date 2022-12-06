@@ -13,9 +13,10 @@ foreach($posts as $post){
 
 ?>
 <div class="topic">
-    <p><?=$post->getMessage()?></p>
 
+    <p><?=$post->getUser()?></p>
     <p><?=$post->getDatePost()?></p>
+    <p><?=$post->getMessage()?></p>  
     
 </div>
 <?php

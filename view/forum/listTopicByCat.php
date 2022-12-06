@@ -31,14 +31,14 @@ foreach($topics as $topic){
 
 <form action="index.php?ctrl=forum&action=addTopic&id=<?=$id?>" method="POST">
 
-<label>Titre du Sujet
+<label>Titre du Sujet <br>
 
     <input type="text" name="title" placeholder="Titre du sujet" required>
 
 </label>
 
 
-<label for="message">Message
+<label for="message">Message <br>
 
     <textarea name="message"required></textarea>
 

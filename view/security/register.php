@@ -18,13 +18,13 @@
             <p>
                 <label >
                     Mot de passe : <br>
-                    <input type="text" name="mdp" required>
+                    <input type="password" name="mdp" required>
                 </label>
             </p>
             <p>
                 <label >
                     Confirmer le mot de passe : <br>
-                    <input type="text" name="mdp2" required>
+                    <input type="password" name="mdp2" required>
                 </label>
             </p>
             <p>

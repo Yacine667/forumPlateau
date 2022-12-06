@@ -2,8 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Josefin Sans', sans-serif;
-   
+    font-family: 'Josefin Sans', sans-serif;  
 }
 
 header {
@@ -11,16 +10,13 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #ffffff, #bababa82, #b3b3b35b, #ffffff);
+    background: linear-gradient(45deg, #F2C6A0, #F2E3D5, #F2A172, #D9805F);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-
-    
+    border: 1px solid rgba( 255, 255, 255, 0.18 );   
 }
 
 @keyframes gradient {
@@ -35,24 +31,22 @@ header {
 	}
 }
 
-
 #nav-left {
 
     font-size: xx-large;    
     text-decoration: none;
     text-align: center;
-    height: 100px;
-    
+    height: 100px;   
 }
 
 #nav-left a {
 
     text-decoration: none;
-    color: rgb(97, 97, 97);
+    color: #A63B32;
 }
-#nav-right {
 
-    
+#nav-right {
+   
     font-size: x-large;
     text-decoration: none;
 }
@@ -60,7 +54,7 @@ header {
 #nav-right a {
     
     text-decoration: none;
-    color: rgb(97, 97, 97);
+    color: #A63B32;
 }
 
 #forum {
@@ -72,39 +66,56 @@ header {
     gap: 50px;
     padding-top: 50px;
     padding-bottom: 50px;
-    background: linear-gradient(-45deg, #000000, #ffffffbe, #0000005b, #ffffff);
+    background: linear-gradient(-45deg, #F2C6A0, #F2E3D5, #F2A172, #D9805F);
 	background-size: 400% 400%;
 	animation: gradient 30s ease infinite;
     min-height: 100vh;
+}
 
+#forum  form{
+
+ display: flex;
+ flex-direction: column;
 }
 
 #forum  input{
-
 
     width: 300px;
     height: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding: 5px;
+    color: #A63B32;
+    background-color: #F2A172;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 #forum  textarea{
 
-
-    width: 400px;
+    width: 300px;
     height: 200px;
-
-
+    border-radius: 10%;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    background-color: #f2a17254;
+    transition: 0.4s;
+    color: #A63B32;
 }
 
 #forum  label{
 
-
-text-align: center;
+    color: #A63B32;
+    text-align: center;
 }
 
 #forum  h1{
 
+    color: #A63B32;
     font-size: 3.2em;
     text-align: center;
     padding-bottom: 20px;
@@ -112,6 +123,7 @@ text-align: center;
 
 footer {
 
+    text-align: right;
     position:fixed;
     bottom: 0;
     margin-top: 100px;
@@ -120,21 +132,19 @@ footer {
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
-
-
+    color: #A63B32;
 }
 
 .topic {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 100px;
     text-align: center;
     width: 30%;
     height: 200px;
-    background: linear-gradient(-45deg, #ffffff, #bababa82, #b3b3b35b, #ffffff);
+    background: linear-gradient(45deg, #F2C6A0, #F2E3D5, #F2A172, #D9805F);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -142,8 +152,9 @@ footer {
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    transition: 0.4s;
-    
+    transition: 0.4s;  
+    overflow: auto;
+    color: #A63B32;
 }
 
 .topic:hover {
@@ -158,7 +169,7 @@ footer {
 
     text-decoration: none;
     font-size: 2em;
-    color: rgba(70, 70, 61, 0.593);
+    color: #A63B32;
     transition: 0.1s;
 }
 
@@ -166,5 +177,5 @@ footer {
 
     text-decoration: none;
     font-size: 3em;
-    color: rgb(3, 3, 0);
+    color: #A63B32;
 }
