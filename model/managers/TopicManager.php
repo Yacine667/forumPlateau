@@ -19,7 +19,8 @@
             parent::connect();
             $sql = "SELECT *
                     FROM $this->tableName
-                    WHERE categorie_id = :id";
+                    WHERE categorie_id = :id
+                    ORDER BY creationDate DESC";
 
             return $this->getMultipleResults(
                 DAO::select($sql,['id' => $id]),

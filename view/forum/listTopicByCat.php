@@ -36,14 +36,14 @@ if(App\Session::getUser()){
 
 <label>Titre du Sujet <br>
 
-    <input type="text" name="title" placeholder="Titre du sujet" required>
+    <input class="ajout" type="text" name="title" placeholder="Titre du sujet" required>
 
 </label>
 
 
 <label for="message">Message <br>
 
-    <textarea name="message"required></textarea>
+    <textarea class="ajout" name="message"required></textarea>
 
 </label>
 

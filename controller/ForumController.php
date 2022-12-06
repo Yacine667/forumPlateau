@@ -33,7 +33,7 @@
             return [
                 "view" => VIEW_DIR . "forum/listTopics.php",
                 "data" => [
-                    "topics" => $topicManager->findAll(["categorie_id", "DESC"])
+                    "topics" => $topicManager->findAll(["creationDate", "DESC"])
                 ]
             ];
 
@@ -69,7 +69,7 @@
 
             $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $userId = 4;
+            $userId = $_SESSION['user'] -> getId();
             $topicManager = new TopicManager();
             $postManager = new PostManager();
 
@@ -87,7 +87,7 @@
         public function addPost($id) {
 
             $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $userId=  4;
+            $userId=  $_SESSION['user'] -> getId();
             $postManager = new PostManager();
 
             if($message) {

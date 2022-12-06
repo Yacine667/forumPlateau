@@ -28,7 +28,7 @@ if(App\Session::getUser()){
 
 ?>
 
-<h1>Nouveau message</h1>
+<h1>Participer : </h1>
 
 <form action="index.php?ctrl=forum&action=addPost&id=<?=$id?>" method="POST">
 

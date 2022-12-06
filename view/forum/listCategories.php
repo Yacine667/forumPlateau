@@ -13,7 +13,7 @@ foreach($categories as $categorie){
 ?>
 <div onclick="document.location='index.php?ctrl=forum&action=listTopicByCat&id=<?= $categorie->getId() ?>'" class="topic">
 
-    <p><a href="index.php?ctrl=forum&action=listTopicByCat&id=<?= $categorie->getId() ?>"><?=$categorie->getNomCategorie()?></a></p>
+    <h2><a href="index.php?ctrl=forum&action=listTopicByCat&id=<?= $categorie->getId() ?>"><?=$categorie->getNomCategorie()?></a></h2>
 
 </div>
 <?php
