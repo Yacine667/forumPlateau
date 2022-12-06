@@ -43,6 +43,7 @@ header {
 
     text-decoration: none;
     color: #A63B32;
+    
 }
 
 #nav-right {
@@ -144,6 +145,8 @@ footer {
     text-align: center;
     width: 30%;
     height: 200px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background: linear-gradient(45deg, #F2C6A0, #F2E3D5, #F2A172, #D9805F);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;

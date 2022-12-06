@@ -11,7 +11,7 @@ $categories = $result["data"]['categories'];
 foreach($categories as $categorie){
 
 ?>
-<div class="topic">
+<div onclick="document.location='index.php?ctrl=forum&action=listTopicByCat&id=<?= $categorie->getId() ?>'" class="topic">
 
     <p><a href="index.php?ctrl=forum&action=listTopicByCat&id=<?= $categorie->getId() ?>"><?=$categorie->getNomCategorie()?></a></p>
 

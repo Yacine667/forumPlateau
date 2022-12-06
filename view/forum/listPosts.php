@@ -14,8 +14,9 @@ foreach($posts as $post){
 ?>
 <div class="topic">
 
-    <p><?=$post->getUser()?></p>
-    <p><?=$post->getDatePost()?></p>
+    <p>De : <?=$post->getUser()?></p>
+    <p>Le : <?=$post->getDatePost()?></p>
+    <p><br></p>
     <p><?=$post->getMessage()?></p>  
     
 </div>

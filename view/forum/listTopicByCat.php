@@ -13,7 +13,7 @@ foreach($topics as $topic){
 
 ?>
 
-<div class="topic">
+<div class="topic"  onclick="document.location='index.php?ctrl=forum&action=listPosts&id=<?= $topic->getId() ?>'" >
 
     <p><a href="index.php?ctrl=forum&action=listPosts&id=<?= $topic->getId() ?>"><?=$topic->getTitle()?></a></p>
 
