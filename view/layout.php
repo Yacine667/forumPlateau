@@ -22,7 +22,7 @@
             <header>
                 <nav>
                     <div id="nav-left">
-                        <a href="http://localhost/forumPlateau/">Accueil</a>
+                        <a href="http://localhost/forumPlateau/"><i class="fa-solid fa-house"></i> <br> Accueil</a>
                         <?php
                         if(App\Session::isAdmin()){
                             ?>
@@ -37,18 +37,18 @@
                         
                         if(App\Session::getUser()){
                             ?>
-                            <a href="/security/viewProfile.html">| <i class="fa-regular fa-user"></i>&nbsp;<?= App\Session::getUser()?></a>
-                            <a href="index.php?ctrl=forum&action=listTopics">| Liste Des Sujets |</a>
-                            <a href="index.php?ctrl=forum&action=listCategories"> Liste Des Catégories |</a>
-                            <a href="index.php?ctrl=security&action=logout">Déconnexion |</a>
+                            <a href="/security/viewProfile.html"> <i class="fa-regular fa-user"></i>&nbsp;<?= App\Session::getUser()?></a>
+                            <a href="index.php?ctrl=forum&action=listTopics"> Liste Des Sujets </a>
+                            <a href="index.php?ctrl=forum&action=listCategories"> Liste Des Catégories </a>
+                            <a href="index.php?ctrl=security&action=logout">Déconnexion </a>
                             <?php
                         }
                         else{
                             ?>
-                            <a href="index.php?ctrl=security&action=login">| Connexion |</a>
-                            <a href="index.php?ctrl=security&action=addUser"> Inscription |</a>
-                            <a href="index.php?ctrl=forum&action=listTopics"> Liste Des Sujets |</a>
-                            <a href="index.php?ctrl=forum&action=listCategories"> Liste Des Catégories |</a>
+                            <a href="index.php?ctrl=security&action=login"> Connexion </a>
+                            <a href="index.php?ctrl=security&action=addUser"> Inscription </a>
+                            <a href="index.php?ctrl=forum&action=listTopics"> Liste Des Sujets </a>
+                            <a href="index.php?ctrl=forum&action=listCategories"> Liste Des Catégories </a>
                             
                         <?php
                         }
