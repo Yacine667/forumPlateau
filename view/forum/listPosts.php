@@ -49,6 +49,7 @@ if(App\Session::getUser()){
     else{
 
 ?>
+        <p style="color: white;">Pour participer veuillez vous connecter ou vous inscrire : </p>
         <a href="index.php?ctrl=security&action=login"> Connexion </a>
         <a href="index.php?ctrl=security&action=addUser"> Inscription </a>
         

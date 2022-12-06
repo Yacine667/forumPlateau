@@ -49,8 +49,7 @@ header {
 #nav-left a {
 
     text-decoration: none;
-    color: #A63B32;
-    
+    color: #A63B32;    
 }
 
 #nav-right {
@@ -127,8 +126,8 @@ header {
     width: 300px;
     height: 50px;
     font-size: 1.2em;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 5px;
     color: #ffffff;
     background-color: #F2A172;
@@ -136,6 +135,7 @@ header {
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     box-shadow: 0 10px 40px rgba(177, 169, 159, 0.8);
+    border-radius: 10px;
 }
 
 #forum  textarea{
@@ -153,8 +153,7 @@ header {
     background-color: #f2a17254;
     transition: 0.4s;
     color: #ffffff;
-    font-size: 1em;
-    
+    font-size: 1em;    
 }
 
 #forum  label{

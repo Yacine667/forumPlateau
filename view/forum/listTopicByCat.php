@@ -36,7 +36,7 @@ if(App\Session::getUser()){
 
 <label>Titre du Sujet <br>
 
-    <input class="ajout" type="text" name="title" placeholder="Titre du sujet" required>
+    <input class="ajout" type="text" name="title" placeholder="              Titre du sujet" required>
 
 </label>
 
@@ -62,6 +62,7 @@ if(App\Session::getUser()){
 }
 else{
     ?>
+    <p style="color: white;">Pour créer un sujet veuillez vous connecter ou vous inscrire : </p>
     <a href="index.php?ctrl=security&action=login"> Connexion </a>
     <a href="index.php?ctrl=security&action=addUser"> Inscription </a>
     
