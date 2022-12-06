@@ -26,7 +26,7 @@
                         <?php
                         if(App\Session::isAdmin()){
                             ?>
-                            <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
+                            <a href="index.php?ctrl=home&action=users">Utilisateurs Inscrits</a>
                           
                             <?php
                         }
@@ -37,7 +37,7 @@
                         
                         if(App\Session::getUser()){
                             ?>
-                            <a href="/security/viewProfile.html"> <i class="fa-regular fa-user"></i>&nbsp;<?= App\Session::getUser()?></a>
+                            <a href="index.php?ctrl=home&action=viewProfils&id=<?= $_SESSION['user'] -> getId()?>"> <i class="fa-regular fa-user"></i>&nbsp;<?= App\Session::getUser()?></a>
                             <a href="index.php?ctrl=forum&action=listTopics"> Liste Des Sujets </a>
                             <a href="index.php?ctrl=forum&action=listCategories"> Liste Des Catégories </a>
                             <a href="index.php?ctrl=security&action=logout">Déconnexion </a>

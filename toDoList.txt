@@ -1,0 +1,25 @@
+Afficher la liste des utilisateurs ( connection admin )
+  
+  ** utilisation du homecontroler --> FAIT
+
+
+Afficher le profil d'un utilisateur
+
+ ** creer une view du profil
+
+
+
+
+
+Modération du forum ( gérer sujets, gérer utilisateurs en connection admin )
+
+  ** fonction pour edit ou lock un topic par un user
+  ** fonction pour edit ou lock un topic au choix par l'admin
+  ** fonction pour supprimer un topic ou un post
+  ** fonction pour bannir un user en fonction de son pseudo
+
+
+Continuer le Css
+
+
+

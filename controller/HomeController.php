@@ -23,19 +23,32 @@
    
         public function users(){
 
-            $this->restrictTo("ROLE_USER");
+            $this->restrictTo("admin");
     
             $manager = new UserManager();
             $users = $manager->findAll(['dateInscription', 'DESC']);
     
             return [
-                "view" => VIEW_DIR."security/users.php",
+                "view" => VIEW_DIR."security/listUsers.php",
                 "data" => [
                 "users" => $users
                 ]
             ];
             
             }
+
+
+        public function viewprofils($id){
+
+            $manager = new UserManager();
+            $profils = $manager->findOneById($id);
+            return [
+                "view" => VIEW_DIR."security/viewProfil.php",
+                "data" => [
+                "profils" => $profils
+                ]
+            ];
+        }
 
         public function forumRules(){
             
