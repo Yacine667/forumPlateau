@@ -31,7 +31,12 @@ header {
 	}
 }
 
+.message {
 
+    text-align: center;
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+}
 
 #nav-left {
 
@@ -127,6 +132,9 @@ header {
     color: #A63B32;
     background-color: #F2A172;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    box-shadow: 0 10px 40px rgba(177, 169, 159, 0.8);
 }
 
 #forum  textarea{
