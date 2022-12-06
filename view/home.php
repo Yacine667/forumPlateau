@@ -6,7 +6,7 @@
                         
                         if(App\Session::getUser()){
                             ?>
-                            <a href="/security/viewProfile.html"> <i class="fa-regular fa-user"></i></span>&nbsp;<?= App\Session::getUser()?></a>
+                            <a href="index.php?ctrl=home&action=viewProfils&id=<?= $_SESSION['user'] -> getId()?>"> <i class="fa-regular fa-user"></i></span>&nbsp;<?= App\Session::getUser()?></a>
                             <a href="index.php?ctrl=security&action=logout">Déconnexion </a>
                             <?php
                         }

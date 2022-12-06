@@ -15,8 +15,8 @@ foreach($topics as $topic){
 <div class="topic" onclick="document.location='index.php?ctrl=forum&action=listPosts&id=<?= $topic->getId() ?>'">
 
     <p><a href="index.php?ctrl=forum&action=listPosts&id=<?= $topic->getId() ?>"><?=$topic->getTitle()?></a></p>
-
-    <p><?=$topic->getcreationDate()?></p>
+    <p>Créé par : <?=$topic->getUser()?></p>
+    <p> Le : <?=$topic->getcreationDate()?></p>
 
 </div>   
 <?php

@@ -9,7 +9,7 @@ $profils = $result["data"]['profils'];
 ?>
 <div class="topic">
 
-    <p><?=$profils->getPseudo()?></p>
+    <h2><?=$profils->getPseudo()?></h2>
     <p><?=$profils->getMail()?></p>
     <p><br></p>
     <p></p>  

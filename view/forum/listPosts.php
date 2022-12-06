@@ -24,6 +24,8 @@ foreach($posts as $post){
 
 }
 
+if(App\Session::getUser()){
+
 ?>
 
 <h1>Nouveau message</h1>
@@ -41,4 +43,14 @@ foreach($posts as $post){
 
 
 </form>
+<?php
+}
 
+    else{
+
+?>
+        <a href="index.php?ctrl=security&action=login"> Connexion </a>
+        <a href="index.php?ctrl=security&action=addUser"> Inscription </a>
+        
+<?php
+}

@@ -17,7 +17,8 @@ foreach($topics as $topic){
 
     <p><a href="index.php?ctrl=forum&action=listPosts&id=<?= $topic->getId() ?>"><?=$topic->getTitle()?></a></p>
 
-    <p><?=$topic->getcreationDate()?></p>
+    <p>Créé par : <?=$topic->getUser()?></p>
+    <p> Le : <?=$topic->getcreationDate()?></p>
 
 </div>
  
@@ -25,6 +26,8 @@ foreach($topics as $topic){
 
 }
 
+
+if(App\Session::getUser()){
 ?>
 
 <h1>Créer un nouveau Sujet</h1>
@@ -55,4 +58,14 @@ foreach($topics as $topic){
 
 
 </form>
+<?php
+}
+else{
+    ?>
+    <a href="index.php?ctrl=security&action=login"> Connexion </a>
+    <a href="index.php?ctrl=security&action=addUser"> Inscription </a>
+    
+<?php
+}
+
 
