@@ -100,6 +100,20 @@
     }
 
 
+    public function addCategorie() {
+
+        $nomCategorie= filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        
+        $categorieManager = new CategorieManager();
+    
+        if($nomCategorie) {
+
+            $newCategorie=["nomCategorie"=>$nomCategorie];
+            $categorieManager->add($newCategorie);
+    
+            $this->redirectTo("forum","listCategories");
+        }
+    }
 
         
         

@@ -19,3 +19,21 @@ foreach($categories as $categorie){
 <?php
 
 }
+
+if(App\Session::isAdmin()){
+?>
+   <div>
+
+    <h1>Création d'une catégorie</h1>
+
+    <form action="index.php?ctrl=forum&action=addCategorie" method="post">
+        
+        <input type="text" name="nomCategorie" placeholder="Entrez le nom de la catégorie" required>
+        <input type="submit" value="Créer">
+
+    </form>
+
+</div>
+  
+<?php
+}
