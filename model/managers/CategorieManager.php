@@ -25,4 +25,15 @@
                 $this->className
             );
         }
+
+        public function editCategorie($id, $nomCategorie) {
+           
+            $sql = "
+            UPDATE categorie
+            SET nomCategorie = :nomCategorie
+            WHERE id_categorie = :id
+            ";
+
+            DAO::update($sql, ["id"=>$id,"nomCategorie"=>$nomCategorie]);
+        }
     }

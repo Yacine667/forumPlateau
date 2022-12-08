@@ -115,7 +115,32 @@
         }
     }
 
+       
+    public function deleteCategorie($id) {
+
+        $categorieManager = new CategorieManager();
+
+        $categorieManager->delete($id);
+        $this->redirectTo("forum","listCategories");
+    }
+
+
+    public function editCategorie($id) {
+        $categorieManager = new CategorieManager();
+
+        $nomCategorie = filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_SPECIAL_CHARS);
+
+        if($nomCategorie) {
         
+            $categorieManager->editCategorie($id, $nomCategorie);
+            $this->redirectTo("forum","listCategories");
+        }
+
+        return [
+            "view" => VIEW_DIR."forum/editCategorie.php",
+            "data" => ["categorie" => $categorieManager->findOneById($id)]
+        ];
+    }
         
 
           
