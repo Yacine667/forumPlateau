@@ -19,6 +19,24 @@ foreach($topics as $topic){
 
     <p>Créé par : <?=$topic->getUser()?></p>
     <p> Le : <?=$topic->getcreationDate()?></p>
+    <?php
+                    if($topic->getClosed() == 1) {
+                ?>
+                   <a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topic->getId()?>"><i class="fa-solid fa-lock"></i></a> 
+                <?php
+                    } else { 
+                ?> 
+                   <a href="index.php?ctrl=forum&action=lockTopic&id=<?=$topic->getId()?>"><i class="fa-solid fa-unlock"></i></a> 
+                <?php
+                    }  
+                ?>
+                    <a href="index.php?ctrl=forum&action=editTopic&id=<?=$topic->getId()?>">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+                <!-- supprime le topic -->
+                <a href="">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
 
 </div>
  

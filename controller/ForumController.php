@@ -100,51 +100,162 @@
     }
 
 
-    public function addCategorie() {
+        public function addCategorie() {
 
-        $nomCategorie= filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $nomCategorie= filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            $categorieManager = new CategorieManager();
         
-        $categorieManager = new CategorieManager();
-    
-        if($nomCategorie) {
+            if($nomCategorie) {
 
-            $newCategorie=["nomCategorie"=>$nomCategorie];
-            $categorieManager->add($newCategorie);
-    
-            $this->redirectTo("forum","listCategories");
+                $newCategorie=["nomCategorie"=>$nomCategorie];
+                $categorieManager->add($newCategorie);
+        
+                $this->redirectTo("forum","listCategories");
+            }
         }
-    }
 
-       
-    public function deleteCategorie($id) {
-
-        $categorieManager = new CategorieManager();
-
-        $categorieManager->delete($id);
-        $this->redirectTo("forum","listCategories");
-    }
-
-
-    public function editCategorie($id) {
-        $categorieManager = new CategorieManager();
-
-        $nomCategorie = filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_SPECIAL_CHARS);
-
-        if($nomCategorie) {
         
-            $categorieManager->editCategorie($id, $nomCategorie);
+        public function deleteCategorie($id) {
+
+            $categorieManager = new CategorieManager();
+
+            $categorieManager->delete($id);
             $this->redirectTo("forum","listCategories");
         }
 
-        return [
-            "view" => VIEW_DIR."forum/editCategorie.php",
-            "data" => ["categorie" => $categorieManager->findOneById($id)]
-        ];
-    }
-        
 
-          
+        public function editCategorie($id) {
+            $categorieManager = new CategorieManager();
 
-        
+            $nomCategorie = filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_SPECIAL_CHARS);
+
+            if($nomCategorie) {
+            
+                $categorieManager->editCategorie($id, $nomCategorie);
+                $this->redirectTo("forum","listCategories");
+            }
+
+            return [
+                "view" => VIEW_DIR."forum/editCategorie.php",
+                "data" => ["categorie" => $categorieManager->findOneById($id)]
+            ];
+        }
+
+
+        public function editTopicForm($id) {
+            $topicManager = new TopicManager();
+            $topic = $topicManager->findOneById($id);
+
+            return [
+                "view" => VIEW_DIR."forum/editTopic.php",
+                "data" => ["topic" => $topicManager->findOneById($id)]
+            ];
+        }
+
+
+        public function editTopic($id) {
+        $topicManager = new TopicManager();
+        $topic = $topicManager->findOneById($id)->getUser()->getId();
+    
+            
+            if(\App\Session::getUser()) {
+
+                $userId =\App\Session::getUser()->getId();
+
+                if($userId==$topic->getUser()->getId()) {
+
+                    $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    
+                    
+                    if($title) {
+
+                        $topicManager->editTopic($id,$title);
+                        $this->redirectTo("forum","listTopicByCat",$topic->getNomCategorie()->getId());
+
+                    } else {
+                        Session::addFlash("error","Renseigner un titre");
+                        $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
+                    }
+                 
+                }
+                
+                else {
+                    Session::addFlash("error","Vous n'êtes pas autorisé à modifier ce sujet");
+                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
+                }
+                
+
+            } 
+            
+            else {
+                Session::addFlash("error","Veuillez vous connecter");
+                $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie());
+            }            
+        }
+
+
+        public function lockTopic($id) {
+            $topicManager = new TopicManager();
+            $topic = $topicManager->findOneById($id);
+
+            if($_SESSION['user']) {
+
+                $userId = $_SESSION['user']->getId();
+
+                if($userId==$topic->getUser()->getId()) {
+
+                    $topicManager->lockTopic($id);
+                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
+                }
+                
+                else {
+
+                    Session::addFlash("error","Vous n'êtes pas autorisé à modifier ce sujet");
+                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
+                }
+
+            } 
+            
+            else {
+
+                Session::addFlash("error","Vous n'êtes pas autorisé à modifier ce sujet");
+                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
+            }
+        }
+
+
+        public function unlockTopic($id) {
+            $topicManager = new TopicManager();
+            $topic = $topicManager->findOneById($id);
+
+            if($_SESSION['user']) {
+
+                $userId = $_SESSION['user']->getId();
+
+                if($userId==$topic->getUser()->getId()) {
+
+                    $topicManager->unlockTopic($id);
+                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
+                }
+                
+                else {
+
+                    Session::addFlash("error","Vous n'êtes pas autorisé à modifier ce sujet");
+                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
+                }
+
+            } else {
+
+                Session::addFlash("error","vous n'êtes pas autorisé à modifier ce sujet");
+                $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
+            }
+        }
+
+            
+
+            
+
+            
 
     }

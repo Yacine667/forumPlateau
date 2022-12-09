@@ -29,5 +29,42 @@
         }
         
         
+        public function editTopic($id, $title) {
+            parent::connect();
+
+             $sql = "
+             UPDATE topic
+             SET title = :title
+             WHERE id_topic = :id
+             ";
+
+             DAO::update($sql, ["id"=>$id,"title"=>$title]);
+        }
+        
+
+        public function lockTopic($id) {
+            parent::connect();
+
+            $sql = "
+            UPDATE topic
+            SET closed = 1
+            WHERE id_topic = :id
+            ";
+
+            DAO::update($sql, ["id"=>$id]);
+        }
+
+
+        public function unlockTopic($id) {
+            parent::connect();
+
+            $sql = "
+            UPDATE topic
+            SET closed = 0
+            WHERE id_topic = :id
+            ";
+
+            DAO::update($sql, ["id"=>$id]);
+        }
 
     }

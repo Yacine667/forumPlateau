@@ -106,17 +106,17 @@
                 return $this;
         }
 
-        // GETTER CATEGORY
+        // GETTER CATEGORIE
         public function getnomCategorie()
         {
-                return $this->categorie;
+                return $this->nomCategorie;
         }
         
-// SETTER CATEGORY
+// SETTER CATEGORIE
         /**
          * @return  self
          */ 
-        public function setnomCategory($nomCategorie)
+        public function setnomCategorie($nomCategorie)
         {
                 $this->category = $nomCategorie;
         
