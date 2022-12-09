@@ -20,20 +20,22 @@ foreach($topics as $topic){
     <p>Créé par : <?=$topic->getUser()?></p>
     <p> Le : <?=$topic->getcreationDate()?></p>
     <?php
-                    if($topic->getClosed() == 1) {
-                ?>
-                   <a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topic->getId()?>"><i class="fa-solid fa-lock"></i></a> 
+        if(App\Session::getUser()){
+            if(App\Session::isAdmin() || App\Session::getUser()->getId() == $sujet->getUser()->getId()){
+                if($topic->getClosed() == 0){ ?>
+
+                   <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topic->getId()?>"><i class="fa-solid fa-lock"></i></a> 
                 <?php
                     } else { 
                 ?> 
-                   <a href="index.php?ctrl=forum&action=lockTopic&id=<?=$topic->getId()?>"><i class="fa-solid fa-unlock"></i></a> 
+                   <a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topic->getId()?>"><i class="fa-solid fa-unlock"></i></a> 
                 <?php
                     }  
                 ?>
-                    <a href="index.php?ctrl=forum&action=editTopic&id=<?=$topic->getId()?>">
+                    <a href="index.php?ctrl=forum&action=editTopicForm&id=<?=$topic->getId()?>">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </a>
-                <!-- supprime le topic -->
+
                 <a href="">
                     <i class="fa-solid fa-trash"></i>
                 </a>
@@ -87,4 +89,6 @@ else{
 <?php
 }
 
-
+}
+    
+}

@@ -51,4 +51,33 @@
                 $this->className
              );
         }
+
+
+        public function findFirstPostByTopic($id){
+
+            $sql = "SELECT *
+                    FROM post
+                    WHERE topic_id = :id
+                    ORDER BY datePost ASC
+                    LIMIT 1";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql,['id' => $id], false), 
+                $this->className
+            );
+        }
+
+        public function editPost($id, $message) {
+            parent::connect();
+
+             // requête SQL
+             $sql = "
+             UPDATE post
+             SET message = :message
+             WHERE id_post = :id
+             ";
+ 
+             // relie a la fonction préfaite dans DAO qui update la base de données
+             DAO::update($sql, ["id"=>$id,"message"=>$message]);
+        }
     }

@@ -1,15 +1,33 @@
+
+<h1>Edition du topic</h1>
+
 <?php
-$topic = ($result["data"]['topic']);
+$topic = $result["data"]['topic'];
+$title = $topic->getTitle();
+$topicId = $topic->getId();
+$firstPost = $result["data"]['firstPost'];
+$firstPostMessage = $firstPost->getMessage();
+var_dump($firstPost)
 ?>
 
-<h1>Modifier Le Sujet</h1>
+<div>
+    <form action="index.php?ctrl=forum&action=editTopic&id=<?=$topicId?>" method="post">
+    <p>
+            <label>
+                Titre du topic :<br>
+                <input type="text" name="newTitle" value="<?=$title;?>" required>
+            </label>
+        </p>
+        <p>
+            <label>
+                Message :<br>
+                <textarea name="newMessage" rows="5" cols="45" required><?=$firstPostMessage;?></textarea>        
+            </label>
+        </p>
 
-<form method="post">
-    <p><br>
-        <label>
-            Modifier le titre : <br>
-            <input type="text" name="title" value="<?= $topic->getTitle()?>">
-        </label>
-    </p><br>
-        <input type="submit" value="Modifier">
-</form>
+        <div>
+            <input type="submit" name="submit" value="Valider" class="submit">
+        </div>
+            
+    </form>
+</div>

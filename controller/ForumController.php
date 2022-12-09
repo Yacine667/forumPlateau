@@ -143,119 +143,81 @@
         }
 
 
-        public function editTopicForm($id) {
-            $topicManager = new TopicManager();
-            $topic = $topicManager->findOneById($id);
+        // public function editTopicForm($id){
 
-            return [
-                "view" => VIEW_DIR."forum/editTopic.php",
-                "data" => ["topic" => $topicManager->findOneById($id)]
-            ];
-        }
+        //     $topicManager = new TopicManager();
+        //     $topic = $topicManager->findOneById($id);
+
+        //     $postManager = new PostManager();
+        //     $firstPost = $postManager->findFirstPostByTopic($id);
+
+        //     return [
+        //         "view" => VIEW_DIR."forum/editTopic.php",
+        //         "data" => [
+        //             "topic" => $topic,
+        //             "firstPost" => $firstPost,
+        //         ]
+        //     ];
+        // }
 
 
-        public function editTopic($id) {
-        $topicManager = new TopicManager();
-        $topic = $topicManager->findOneById($id)->getUser()->getId();
-    
-            
-            if(\App\Session::getUser()) {
+        // public function editTopic($id){
 
-                $userId =\App\Session::getUser()->getId();
-
-                if($userId==$topic->getUser()->getId()) {
-
-                    $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        //     $topicManager = new TopicManager();
+        //     $userId = $topicManager->findOneById($id)->getUser()->getId();
+        //     if(\App\Session::getUser()){
+        //         if(\App\Session::getUser()->getId() == $userId || \App\Session::isAdmin()){
                     
+        //             $newTitle = filter_input(INPUT_POST, "newTitle", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        //             $data=["title" => $newTitle];
+        //             $topicManager->editTopic($id, $data);
+
+        //             $postManager = new PostManager();
+        //             $firstPost = $postManager->findFirstPostByTopic($id);
+
+        //             $newMessage = filter_input(INPUT_POST, "newMessage", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                     
-                    if($title) {
+        //             $data=["message" => $newMessage];
+                    
 
-                        $topicManager->editTopic($id,$title);
-                        $this->redirectTo("forum","listTopicByCat",$topic->getNomCategorie()->getId());
+        //             $firstPostId = $firstPost->getId();
+        //             $postManager->editPost($firstPostId, $data);
+                    
+        //             Session::addFlash('success','Topic modifié avec succès');
+        //         }
+        //         else{
+        //             Session::addFlash('error','Action Impossible');
+        //         }    
+        //     }
+        //     else{
+        //         Session::addFlash('error','Action Impossible');
+        //     }
 
-                    } else {
-                        Session::addFlash("error","Renseigner un titre");
-                        $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
-                    }
-                 
-                }
-                
-                else {
-                    Session::addFlash("error","Vous n'êtes pas autorisé à modifier ce sujet");
-                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
-                }
-                
-
-            } 
-            
-            else {
-                Session::addFlash("error","Veuillez vous connecter");
-                $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie());
-            }            
-        }
+        //     $this->redirectTo("forum", "listTopicByCat", $id);
+        // }
 
 
         public function lockTopic($id) {
             $topicManager = new TopicManager();
-            $topic = $topicManager->findOneById($id);
 
-            if($_SESSION['user']) {
-
-                $userId = $_SESSION['user']->getId();
-
-                if($userId==$topic->getUser()->getId()) {
-
-                    $topicManager->lockTopic($id);
-                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
-                }
-                
-                else {
-
-                    Session::addFlash("error","Vous n'êtes pas autorisé à modifier ce sujet");
-                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
-                }
-
-            } 
-            
-            else {
-
-                Session::addFlash("error","Vous n'êtes pas autorisé à modifier ce sujet");
-                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
-            }
+            $topicId=(isset($_GET["id"])) ? $_GET["id"] : null;
+            $categorieId = $topicManager->findTopicById($topicId)->getnomCategorie();
+            $topicManager->lockTopic($topicId);
+            Session::addFlash('success','Sujet verouillé');
+            self::redirectTo('forum','listTopics',$categorieId);
         }
 
 
         public function unlockTopic($id) {
             $topicManager = new TopicManager();
-            $topic = $topicManager->findOneById($id);
 
-            if($_SESSION['user']) {
-
-                $userId = $_SESSION['user']->getId();
-
-                if($userId==$topic->getUser()->getId()) {
-
-                    $topicManager->unlockTopic($id);
-                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
-                }
-                
-                else {
-
-                    Session::addFlash("error","Vous n'êtes pas autorisé à modifier ce sujet");
-                    $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
-                }
-
-            } else {
-
-                Session::addFlash("error","vous n'êtes pas autorisé à modifier ce sujet");
-                $this->redirectTo("forum","listTopicByCat", $topic->getNomCategorie()->getId());
-            }
-        }
-
-            
-
-            
-
-            
+            $topicId=(isset($_GET["id"])) ? $_GET["id"] : null;
+            $categorieId = $topicManager->findTopicById($topicId)->getNomCategorie();
+            $topicManager->unlockTopic($topicId);
+            Session::addFlash('success','Sujet déverrouillé');
+            self::redirectTo('forum','listTopics',$categorieId);        
 
     }
+
+}

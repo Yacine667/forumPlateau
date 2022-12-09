@@ -27,6 +27,19 @@
                 $this->className
             );
         }
+
+
+        public function findTopicById($id) {
+            $sql = "SELECT *
+                    FROM $this->tableName
+                    WHERE id_topic = :id";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql,['id' => $id], false),
+                $this->className
+            );
+
+        }
         
         
         public function editTopic($id, $title) {
@@ -40,7 +53,7 @@
 
              DAO::update($sql, ["id"=>$id,"title"=>$title]);
         }
-        
+
 
         public function lockTopic($id) {
             parent::connect();
