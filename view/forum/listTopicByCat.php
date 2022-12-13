@@ -19,26 +19,52 @@ foreach($topics as $topic){
 
     <p>Créé par : <?=$topic->getUser()?></p>
     <p> Le : <?=$topic->getcreationDate()?></p>
+
     <?php
+
         if(App\Session::getUser()){
+
             if(App\Session::isAdmin() || App\Session::getUser()->getId() == $sujet->getUser()->getId()){
+
                 if($topic->getClosed() == 0){ ?>
 
                    <a href="index.php?ctrl=forum&action=lockTopic&id=<?= $topic->getId()?>"><i class="fa-solid fa-lock"></i></a> 
                 <?php
-                    } else { 
-                ?> 
-                   <a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topic->getId()?>"><i class="fa-solid fa-unlock"></i></a> 
-                <?php
-                    }  
+
+                } 
+                    
+                    else { 
+
+                        ?> 
+
+                        <a href="index.php?ctrl=forum&action=unlockTopic&id=<?=$topic->getId()?>"><i class="fa-solid fa-unlock"></i></a> 
+
+                        <?php
+                        
+                    }
+
+                }
+    
+            }  
+
                 ?>
-                    <a href="index.php?ctrl=forum&action=editTopicForm&id=<?=$topic->getId()?>">
-                    <i class="fa-solid fa-pen-to-square"></i>
+                <a href="index.php?ctrl=forum&action=editTopicForm&id=<?=$topic->getId()?>"><i class="fa-solid fa-pen-to-square"></i>
                 </a>
 
-                <a href="">
+<?php
+
+        if(App\Session::isAdmin()) {
+
+?>
+
+                <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId()?>">
                     <i class="fa-solid fa-trash"></i>
                 </a>
+
+<?php }
+
+?>
+              
 
 </div>
  
@@ -87,8 +113,5 @@ else{
     <a href="index.php?ctrl=security&action=addUser"> Inscription </a>
     
 <?php
-}
 
-}
-    
 }

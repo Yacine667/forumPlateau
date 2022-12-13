@@ -80,4 +80,12 @@
              // relie a la fonction préfaite dans DAO qui update la base de données
              DAO::update($sql, ["id"=>$id,"message"=>$message]);
         }
+
+        public function deleteAllMessageTopic($id){
+            $sql = "DELETE FROM ".$this->tableName."
+                    WHERE topic_id = :id
+                    ";
+
+            return DAO::delete($sql, ['id' => $id]);
+        }
     }
