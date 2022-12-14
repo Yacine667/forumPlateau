@@ -275,10 +275,11 @@
         public function deletePost($id) {
 
             $postManager = new PostManager();
+            $post = $postManager->findOneById($id);
 
             $postManager->delete($id);
 
-            $this->redirectTo("forum","listTopics");
+            $this->redirectTo("forum","listPosts", $post->getTopic()->getId());
         }
 
 }
