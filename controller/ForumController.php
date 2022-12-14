@@ -218,7 +218,7 @@
             Session::addFlash('success','Sujet déverrouillé');
             self::redirectTo('forum','listTopicByCat',$categorieId);        
 
-    }
+        }
 
         public function deleteTopic(){
 
@@ -230,6 +230,55 @@
             Session::addFlash('success','Sujet supprimé');
             self::redirectTo('forum','listTopics');
 
-    }
+        }
+
+        public function editPost($id) {
+
+            $postManager = new PostManager();
+            $post = $postManager->findOneById($id);
+
+            $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if($_SESSION['user']) {
+
+                $userId = $_SESSION['user']->getId();
+
+                if($userId == $post->getUser()->getId()) {
+
+                    if($message) {
+
+                        $postManager->editPost($id,$message);
+                        $this->redirectTo("forum","listPosts", $post->getTopic()->getId());
+
+                    }
+
+                } 
+                
+                else {
+                    Session::addFlash("error","vous n'êtes pas autorisé à modifier ce message");
+                    $this->redirectTo("forum","listPosts", $post->getTopic()->getId());
+                }
+
+            } 
+            
+            else {
+                Session::addFlash("error","vous n'êtes pas autorisé à modifier ce sujet");
+                $this->redirectTo("forum","listPosts", $post->getTopic()->getId());
+            }
+
+            return [
+                "view" => VIEW_DIR."forum/editPost.php",
+                "data" => ["post" => $postManager->findOneById($id)]
+            ];
+        }
+
+        public function deletePost($id) {
+
+            $postManager = new PostManager();
+
+            $postManager->delete($id);
+
+            $this->redirectTo("forum","listTopics");
+        }
 
 }
