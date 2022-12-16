@@ -14,9 +14,9 @@ Afficher le profil d'un utilisateur
 Modération du forum ( gérer sujets, gérer utilisateurs en connection admin )
 
   ** fonction pour ajouter modifier ou supprimer une categorie par l'admin --> FAIT
-  ** fonction pour edit ou lock un topic par un user
-  ** fonction pour edit ou lock un topic au choix par l'admin
-  ** fonction pour supprimer un topic ou un post
+  ** fonction pour edit ou lock un topic par un user --> FAIT
+  ** fonction pour edit ou lock un topic au choix par l'admin --> FAIT
+  ** fonction pour supprimer un topic ou un post --> FAIT
   ** fonction pour bannir un user en fonction de son pseudo
 
 
