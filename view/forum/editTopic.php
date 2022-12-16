@@ -7,7 +7,7 @@ $title = $topic->getTitle();
 $topicId = $topic->getId();
 $firstPost = $result["data"]['firstPost'];
 $firstPostMessage = $firstPost->getMessage();
-var_dump($firstPost)
+// var_dump($firstPost)
 ?>
 
 <div>
