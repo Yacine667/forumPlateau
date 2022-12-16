@@ -197,7 +197,7 @@
                 Session::addFlash('error','Action Impossible');
             }
 
-            $this->redirectTo("forum", "listTopicByCat", $id);
+            $this->redirectTo("forum", "listTopics");
         }
 
 
@@ -208,7 +208,7 @@
             $categorieId = $topicManager->findTopicById($topicId)->getnomCategorie();
             $topicManager->lockTopic($topicId);
             Session::addFlash('success','Sujet verouillé');
-            self::redirectTo('forum','listTopicByCat',$categorieId);
+            self::redirectTo('forum','listTopics');
         }
 
 
@@ -219,7 +219,7 @@
             $categorieId = $topicManager->findTopicById($topicId)->getNomCategorie();
             $topicManager->unlockTopic($topicId);
             Session::addFlash('success','Sujet déverrouillé');
-            self::redirectTo('forum','listTopicByCat',$categorieId);        
+            self::redirectTo('forum','listTopics',$categorieId);        
 
         }
 

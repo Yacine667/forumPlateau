@@ -206,13 +206,14 @@ footer {
     transition: 0.4s;  
     overflow: auto;
     color: #A63B32;
+    overflow: hidden;
 }
 
 .topic:hover {
 
     background-color: beige;
     width: 35%;
-    height: 250px;
+    height: 350px;
     font-size: 1.8em;
 }
 
@@ -230,3 +231,4 @@ footer {
     font-size: 3em;
     color: #A63B32;
 }
+

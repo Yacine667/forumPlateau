@@ -18,14 +18,33 @@ foreach($posts as $post){
     <p>Le : <?=$post->getDatePost()?></p>
     <p><br></p>
     <p><?=$post->getMessage()?></p>  
-    <a href="index.php?ctrl=forum&action=editPost&id=<?=$post->getId()?>">
-        <i class="fa-solid fa-pen-to-square"></i>
-    </a>
-    <a href="index.php?ctrl=forum&action=deletePost&id=<?=$post->getId()?>">
-        <i class="fa-solid fa-trash"></i>
-    </a>
+
+    <?php
+
+    if(\App\Session::getUser()){
+
+                if(\App\Session::getUser()->getId() == $post->getUser()->getId() || \App\Session::isAdmin()){
+
+?>
+
+                    <a href="index.php?ctrl=forum&action=editPost&id=<?=$post->getId()?>">
+                        <i class="fa-solid fa-pen-to-square"></i></a>
+
+
+                    <a href="index.php?ctrl=forum&action=deletePost&id=<?=$post->getId()?>">
+                        <i class="fa-solid fa-trash"></i></a>
+
+<?php
+
+                }
+
+            }
+
+?>
     
 </div>
+
+
 <?php
 
 }

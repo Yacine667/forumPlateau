@@ -42,26 +42,21 @@ foreach($topics as $topic){
                         <?php
                         
                     }
-
-                }
-    
-            }  
-
-                ?>
-                <a href="index.php?ctrl=forum&action=editTopicForm&id=<?=$topic->getId()?>"><i class="fa-solid fa-pen-to-square"></i>
-                </a>
-
-<?php
-
-        if(App\Session::isAdmin()) {
-
 ?>
+
+                <a href="index.php?ctrl=forum&action=editTopicForm&id=<?=$topic->getId()?>">
+                <i class="fa-solid fa-pen-to-square"></i>
+                </a>
 
                 <a href="index.php?ctrl=forum&action=deleteTopic&id=<?= $topic->getId()?>">
                     <i class="fa-solid fa-trash"></i>
                 </a>
 
-<?php }
+<?php
+
+                }
+    
+            }  
 
 ?>
               
@@ -99,18 +94,14 @@ if(App\Session::getUser()){
 
 </label>
 
-
-
-
-
 </form>
 <?php
 }
-else{
-    ?>
-    <p style="color: white;">Pour créer un sujet veuillez vous connecter ou vous inscrire : </p>
-    <a href="index.php?ctrl=security&action=login"> Connexion </a>
-    <a href="index.php?ctrl=security&action=addUser"> Inscription </a>
+    else{
+?>
+        <p style="color: white;">Pour créer un sujet veuillez vous connecter ou vous inscrire : </p>
+        <a href="index.php?ctrl=security&action=login"> Connexion </a>
+        <a href="index.php?ctrl=security&action=addUser"> Inscription </a>
     
 <?php
 
