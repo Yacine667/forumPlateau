@@ -6,8 +6,8 @@ $post = ($result["data"]['post']);
 
 <form method="post">
     <label>
-        modifier le texte :<br>
-        <textarea name="message"><?= $post->getMessage()?></textarea>
+        Modifier votre message :<br>
+        <textarea class="ajout" name="message"><?= $post->getMessage()?></textarea>
     </label>
     <br>
     <input type="submit" value="Modifier">
