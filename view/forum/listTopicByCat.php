@@ -24,7 +24,7 @@ foreach($topics as $topic){
 
         if(App\Session::getUser()){
 
-            if(App\Session::isAdmin() || App\Session::getUser()->getId() == $sujet->getUser()->getId()){
+            if(App\Session::isAdmin() || App\Session::getUser()->getId() == $topic->getUser()->getId()){
 
                 if($topic->getClosed() == 0){ ?>
 

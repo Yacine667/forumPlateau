@@ -119,6 +119,13 @@
         public function deleteCategorie($id) {
 
             $categorieManager = new CategorieManager();
+            $sujetManager = new TopicManager();
+            $messageManager = new PostManager();
+            $sujetId=(isset($_GET["id"])) ? $_GET["id"] : null;
+            $categorieId=(isset($_GET["id"])) ? $_GET["id"] : null;
+            $messageManager->deleteAllMessageTopic($sujetId);
+            $sujetManager->deleteAllTopicCategorie($categorieId);
+            var_dump($messageManager);die;
 
             $categorieManager->delete($id);
             $this->redirectTo("forum","listCategories");
@@ -170,19 +177,15 @@
                     
                     $newTitle = filter_input(INPUT_POST, "newTitle", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                    $data=["title" => $newTitle];
-                    $topicManager->editTopic($id, $data);
+                    $topicManager->editTopic($id, $newTitle);
 
                     $postManager = new PostManager();
                     $firstPost = $postManager->findFirstPostByTopic($id);
 
                     $newMessage = filter_input(INPUT_POST, "newMessage", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                    
-                    $data=["message" => $newMessage];
-                    
 
                     $firstPostId = $firstPost->getId();
-                    $postManager->editPost($firstPostId, $data);
+                    $postManager->editPost($firstPostId, $newMessage);
                     
                     Session::addFlash('success','Topic modifié avec succès');
                 }

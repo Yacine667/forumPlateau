@@ -16,7 +16,6 @@ foreach($categories as $categorie){
     <h2><a href="index.php?ctrl=forum&action=listTopicByCat&id=<?= $categorie->getId() ?>"><?=$categorie->getNomCategorie()?></a></h2>
     <?php
 
-    
     if(App\Session::isAdmin()){
 ?>
 
