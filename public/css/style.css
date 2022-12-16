@@ -207,6 +207,7 @@ footer {
     color: #A63B32;
     overflow: hidden;
     font-size: 1.4em;
+    position: relative;
 }
 
 .topic:hover {
@@ -230,5 +231,59 @@ footer {
     text-decoration: none;
     font-size: 2.1em;
     color: #A63B32;
+}
+
+.topic .fa-trash {
+
+    position: fixed;
+    right: 5%;
+    top: 70%;
+    font-size: 0.6em;
+    transition: 0.4s;
+}
+
+.topic .fa-trash:hover {
+
+    color: rgba(255, 0, 0, 0.496);
+}
+
+.topic .fa-pen-to-square {
+
+    position: fixed;
+    right: 4.5%;
+    top: 40%;
+    font-size: 0.6em;
+    transition: 0.4s;
+}
+
+.topic .fa-pen-to-square:hover {
+
+    color: rgba(47, 175, 255, 0.612);
+}
+
+.topic .fa-unlock {
+
+    position: fixed;
+    right: 5%;
+    top: 10%;
+    font-size: 0.6em;
+}
+
+.topic .fa-unlock:hover {
+
+    color: rgba(172, 255, 47, 0.563); 
+}
+
+.topic .fa-lock {
+
+    position: fixed;
+    right: 5%;
+    top: 10%;
+    font-size: 0.6em;
+}
+
+.topic .fa-lock:hover {
+
+    color: rgba(255, 1, 1, 0.563); 
 }
 
