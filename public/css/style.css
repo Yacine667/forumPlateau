@@ -264,8 +264,8 @@ footer {
 .topic .fa-unlock {
 
     position: fixed;
-    right: 5%;
-    top: 10%;
+    left: 5%;
+    bottom: 10%;
     font-size: 0.6em;
 }
 
@@ -277,8 +277,8 @@ footer {
 .topic .fa-lock {
 
     position: fixed;
-    right: 5%;
-    top: 10%;
+    left: 5%;
+    bottom: 10%;
     font-size: 0.6em;
 }
 
